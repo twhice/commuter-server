@@ -1,3 +1,6 @@
+use cors::CORS;
+
+mod cors;
 mod data;
 mod query;
 mod register;
@@ -9,11 +12,14 @@ extern crate rocket;
 #[rocket::main]
 async fn main() -> Result<(), rocket::Error> {
     let config = rocket::Config {
+        address: "0.0.0.0".parse().unwrap(),
         port: 12000,
         ..Default::default()
     };
 
     let _rocket = rocket::build()
+        .attach(CORS)
+        .mount("/", routes![cors::take_cors])
         .mount("/register", routes![register::register])
         .mount("/stop", routes![data::route_stop])
         .mount("/sign_in", routes![sign::sign_in])
