@@ -4,6 +4,7 @@ use rocket::{
     Request, Response,
 };
 
+/// 用来避免CORS问题，不多赘述
 #[allow(clippy::upper_case_acronyms)]
 pub struct CORS;
 
