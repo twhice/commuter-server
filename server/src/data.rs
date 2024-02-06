@@ -1,10 +1,5 @@
 use rocket::serde::{json, Deserialize, Serialize};
-use std::{
-    any::Any,
-    collections::HashMap,
-    sync::{atomic::AtomicBool, Arc},
-    time::Duration,
-};
+use std::{any::Any, collections::HashMap, sync::Arc, time::Duration};
 
 use tokio::{
     sync::{mpsc, Mutex},
